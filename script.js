@@ -15,16 +15,21 @@ const showModal = () => {
 };
 
 const removeModal = e => {
-  if (
-    e.target.classList.contains('close-modal') ||
-    e.target.classList.contains('overlay')
-  ) {
-    modal.classList.add('hidden');
-    overlay.classList.add('hidden');
-  }
+  modal.classList.add('hidden');
+  overlay.classList.add('hidden');
 };
 
 // *------------------------ Event Listeners *------------------------------ //
 
 showModalBtns.forEach(modal => modal.addEventListener('click', showModal));
-document.addEventListener('click', removeModal);
+document.addEventListener('click', e => {
+  if (
+    e.target.classList.contains('close-modal') ||
+    e.target.classList.contains('overlay')
+  )
+    removeModal();
+});
+
+document.addEventListener('keyup', e => {
+  if (e.key === 'Escape') removeModal();
+});
