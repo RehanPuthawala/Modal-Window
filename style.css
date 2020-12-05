@@ -73,6 +73,10 @@ p {
   z-index: 10;
 }
 
+.modal:focus {
+  outline: none;
+}
+
 .overlay {
   position: absolute;
   top: 0;
